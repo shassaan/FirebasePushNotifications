@@ -73,7 +73,7 @@
                     var title = payload.notification.title;
                     var body = payload.notification.body;
                     var notification = new Notification(title, {
-                        icon: 'https://avatars1.githubusercontent.com/u/31027252?v=4',
+                        icon: payload.notification.image,
                         body: body,
                     });
                     console.log("notification created");
