@@ -59,7 +59,7 @@
             var body = payload.notification.body;
             // The notification works fine in FireFox but isnt working in Chorme it has to do something with chrome flags
             var notification = new Notification(title, {
-                icon: 'https://avatars1.githubusercontent.com/u/31027252?v=4',
+                icon: payload.notification.image,
                 body: body,
             });
             console.log("notification created");
