@@ -57,8 +57,9 @@
             // If it's okay let's create a notification
             var title = payload.notification.title;
             var body = payload.notification.body;
+            // The notification works fine in FireFox but isnt working in Chorme it has to do something with chrome flags
             var notification = new Notification(title, {
-                icon: 'https://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+                icon: 'https://avatars1.githubusercontent.com/u/31027252?v=4',
                 body: body,
             });
             console.log("notification created");
@@ -72,7 +73,7 @@
                     var title = payload.notification.title;
                     var body = payload.notification.body;
                     var notification = new Notification(title, {
-                        icon: 'https://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+                        icon: 'https://avatars1.githubusercontent.com/u/31027252?v=4',
                         body: body,
                     });
                     console.log("notification created");
