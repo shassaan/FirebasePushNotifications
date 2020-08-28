@@ -46,6 +46,43 @@
     });
     messaging.onMessage((payload) => {
         console.log('Message received. ', payload);
+
+        //Let's check if the browser supports notifications
+        if (!("Notification" in window)) {
+            alert("This browser does not support desktop notification");
+        }
+
+        // Let's check whether notification permissions have already been granted
+        else if (Notification.permission === "granted") {
+            // If it's okay let's create a notification
+            var title = payload.notification.title;
+            var body = payload.notification.body;
+            // The notification works fine in FireFox but isnt working in Chorme it has to do something with chrome flags
+            var notification = new Notification(title, {
+                icon: payload.notification.image,
+                body: body,
+            });
+            console.log("notification created");
+        }
+
+        // Otherwise, we need to ask the user for permission
+        else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(function (permission) {
+                // If the user accepts, let's create a notification
+                if (permission === "granted") {
+                    var title = payload.notification.title;
+                    var body = payload.notification.body;
+                    var notification = new Notification(title, {
+                        icon: payload.notification.image,
+                        body: body,
+                    });
+                    console.log("notification created");
+                }
+            });
+        }
+
+
+
         // ...
     });
 

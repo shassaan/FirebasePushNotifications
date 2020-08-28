@@ -16,7 +16,7 @@ namespace FirebasePushNotifications
             
         }
 
-        public async Task<string> SendNotification(string token)
+        public async Task<string> SendNotification(NotifyDTO notifyDTO)
         {
             var defaultApp = FirebaseApp.Create(new AppOptions()
             {
@@ -27,8 +27,9 @@ namespace FirebasePushNotifications
             {
                 Notification = new Notification
                 {
-                    Title = "Message Title",
-                    Body = "Message Body"
+                    Title = notifyDTO.Title,
+                    Body = notifyDTO.Body,
+                    ImageUrl = notifyDTO.ImageURL,
                 },
                 Condition = "!('anytopicyoudontwanttouse' in topics)"
             };

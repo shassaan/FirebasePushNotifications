@@ -18,11 +18,11 @@ namespace FirebasePushNotifications.Controllers
         }
 
         [HttpPost]
-        public async Task<String> Post([FromBody]string token)
+        public async Task<String> Post([FromBody] NotifyDTO notifyDTO)
         {
             try
             {
-                var result= await fireBaseService.SendNotification(token);
+                var result= await fireBaseService.SendNotification(notifyDTO);
                 return result;
             }
             catch (Exception ex)
